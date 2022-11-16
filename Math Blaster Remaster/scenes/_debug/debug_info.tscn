@@ -13,7 +13,7 @@ margin_bottom = 40.0
 margin_right = 40.0
 margin_bottom = 14.0
 
-[node name="framerate" type="Label" parent="InfoBox"]
+[node name="current_state" type="Label" parent="InfoBox"]
 margin_top = 18.0
 margin_right = 40.0
 margin_bottom = 32.0
