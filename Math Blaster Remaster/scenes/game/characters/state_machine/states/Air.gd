@@ -3,11 +3,11 @@ extends PlayerState
 var hovering = false
 var pressed = false
 
-# Upon entering the state, print a message
+
 func enter() -> void:
 	player._current_state = "FALLING"
 	if player._can_jump:
-		player.velocity.y = player.JUMP_FORCE
+		player.velocity.y = player.JUMP_SPEED
 		pressed = true
 	player._animation_player.play("falling")
 	player._can_jump = false
@@ -19,7 +19,7 @@ func physics_update(delta: float) -> void:
 	var x_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	
 	if(x_input != 0):
-		player.sprite.flip_h = x_input < 0
+		player._animation_player.flip_h = x_input < 0
 	
 	if(hovering):
 		player.velocity.x = lerp(player.velocity.x, x_input * player.WALK_SPEED, player.MVMT_ACCELERATION * delta)

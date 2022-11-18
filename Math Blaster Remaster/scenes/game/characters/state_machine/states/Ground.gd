@@ -3,7 +3,7 @@ extends PlayerState
 var running = false
 var crawling = false
 
-# Upon entering the state, print a message
+
 func enter() -> void:
 	player._current_state = "WALKING"
 
@@ -15,7 +15,7 @@ func physics_update(delta: float) -> void:
 
 	var x_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	if(x_input != 0):
-		player.sprite.flip_h = x_input < 0
+		player._animation_player.flip_h = x_input < 0
 	if(running):
 		player.velocity.x = lerp(player.velocity.x, x_input * player.RUN_SPEED, player.MVMT_ACCELERATION * delta)
 	elif(crawling):

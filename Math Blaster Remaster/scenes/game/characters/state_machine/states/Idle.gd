@@ -1,9 +1,10 @@
 extends PlayerState
 
-# Upon entering the state, print a message
+
 func enter() -> void:
 	player._current_state = "IDLE"
 	player._animation_player.play("idling")
+	player.velocity = Vector2.ZERO
 	player._can_jump = true
 	player._can_hover = false
 	player._can_crawl = true
