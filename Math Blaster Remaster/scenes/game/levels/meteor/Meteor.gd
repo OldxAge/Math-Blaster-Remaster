@@ -7,6 +7,5 @@ func _physics_process(delta: float) -> void:
 	position += Vector2(x_speed, y_speed) * delta
 	rotate(1 * delta)
 
-func _on_Meteor_body_entered(body: Player) -> void:
+func _on_Meteor_body_entered(_body: Player) -> void:
 	visible = false
-	print("destroyed")

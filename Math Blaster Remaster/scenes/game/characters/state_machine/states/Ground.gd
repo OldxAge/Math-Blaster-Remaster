@@ -10,6 +10,7 @@ func enter() -> void:
 
 func physics_update(delta: float) -> void:
 	if not player.is_on_floor():
+		player._can_jump = false
 		state_machine.transition_to("Air")
 		return
 

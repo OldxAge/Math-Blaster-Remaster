@@ -2,7 +2,7 @@ class_name Player
 extends KinematicBody2D
 
 
-signal state_changed()
+#signal state_changed()
 
 const MVMT_ACCELERATION = 20
 const HOVER_ACCELERATION = 2
@@ -38,7 +38,7 @@ var _can_climb
 var _playerInventory := []
 
 
-func addFuelToInventory(_item):
+func addFuelToInventory(_item: Item):
 	_playerInventory.append(_item)
 	for n in _playerInventory.size():
 		print(_playerInventory[n].shape, _playerInventory[n].color, _playerInventory[n].content)

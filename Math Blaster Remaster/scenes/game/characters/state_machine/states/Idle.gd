@@ -10,7 +10,7 @@ func enter() -> void:
 	player._can_crawl = true
 
 
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	# If you have platforms that break when standing on them, you need that check for 
 	# the character to fall.
 	if not player.is_on_floor():

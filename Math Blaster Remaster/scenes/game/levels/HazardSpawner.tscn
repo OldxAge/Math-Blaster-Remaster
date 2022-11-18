@@ -12,19 +12,41 @@ position = Vector2( 0, -200 )
 
 [node name="SpawnPoints" type="Node" parent="."]
 
-[node name="SpawnPoint1" type="Position2D" parent="SpawnPoints"]
+[node name="Top" type="Node" parent="SpawnPoints"]
+
+[node name="SpawnPoint_T1" type="Position2D" parent="SpawnPoints/Top"]
 position = Vector2( -220, 0 )
 
-[node name="SpawnPoint2" type="Position2D" parent="SpawnPoints"]
+[node name="SpawnPoint_T2" type="Position2D" parent="SpawnPoints/Top"]
 position = Vector2( -110, 0 )
 
-[node name="SpawnPoint3" type="Position2D" parent="SpawnPoints"]
+[node name="SpawnPoint_T3" type="Position2D" parent="SpawnPoints/Top"]
 
-[node name="SpawnPoint4" type="Position2D" parent="SpawnPoints"]
+[node name="SpawnPoint_T4" type="Position2D" parent="SpawnPoints/Top"]
 position = Vector2( 110, 0 )
 
-[node name="SpawnPoint5" type="Position2D" parent="SpawnPoints"]
+[node name="SpawnPoint_T5" type="Position2D" parent="SpawnPoints/Top"]
 position = Vector2( 220, 0 )
+
+[node name="Sides" type="Node" parent="SpawnPoints"]
+
+[node name="SpawnPoint_L1" type="Position2D" parent="SpawnPoints/Sides"]
+position = Vector2( -280, 40 )
+
+[node name="SpawnPoint_L2" type="Position2D" parent="SpawnPoints/Sides"]
+position = Vector2( -280, 80 )
+
+[node name="SpawnPoint_L3" type="Position2D" parent="SpawnPoints/Sides"]
+position = Vector2( -280, 120 )
+
+[node name="SpawnPoint_R1" type="Position2D" parent="SpawnPoints/Sides"]
+position = Vector2( 280, 40 )
+
+[node name="SpawnPoint_R2" type="Position2D" parent="SpawnPoints/Sides"]
+position = Vector2( 280, 80 )
+
+[node name="SpawnPoint_R3" type="Position2D" parent="SpawnPoints/Sides"]
+position = Vector2( 280, 120 )
 
 [node name="SpawnInterval" type="Timer" parent="."]
 wait_time = 2.0
@@ -35,7 +57,7 @@ autostart = true
 [node name="Meteors" type="Node2D" parent="Hazards"]
 position = Vector2( 0, -200 )
 
-[node name="Meteor" parent="Hazards/Meteors" instance=ExtResource( 3 )]
+[node name="Meteor1" parent="Hazards/Meteors" instance=ExtResource( 3 )]
 visible = false
 x_speed = 0
 
@@ -62,7 +84,7 @@ x_speed = 0
 [node name="Aliens" type="Node2D" parent="Hazards"]
 position = Vector2( 0, -200 )
 
-[node name="Alien" parent="Hazards/Aliens" instance=ExtResource( 2 )]
+[node name="Alien1" parent="Hazards/Aliens" instance=ExtResource( 2 )]
 
 [node name="Alien2" parent="Hazards/Aliens" instance=ExtResource( 2 )]
 
