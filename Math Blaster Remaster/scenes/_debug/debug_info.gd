@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var player_velocity
+var playervelocity
 
 func setVelocity(_playerSpeed: Vector2):
 	$InfoBox/velocity.text = "Player Speed = %s" % _playerSpeed 

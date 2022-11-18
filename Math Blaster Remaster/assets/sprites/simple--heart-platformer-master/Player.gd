@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const TARGET_FPS = 60
-const ACCELERATION = 8
+const MVMT_ACCELERATION = 8
 const MAX_SPEED = 64
 const FRICTION = 10
 const AIR_RESISTANCE = 1
@@ -18,7 +18,7 @@ func _physics_process(delta):
 	
 	if x_input != 0:
 		animationPlayer.play("Run")
-		motion.x += x_input * ACCELERATION * delta * TARGET_FPS
+		motion.x += x_input * MVMT_ACCELERATION * delta * TARGET_FPS
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 		sprite.flip_h = x_input < 0
 	else:
