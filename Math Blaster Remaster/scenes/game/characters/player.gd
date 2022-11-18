@@ -24,6 +24,7 @@ const CLIMB_SPEED = 64
 
 
 var velocity = Vector2.ZERO
+# -------------------Remove after testing
 var speed
 
 onready var _animation_player = $AnimatedSprite
@@ -34,9 +35,17 @@ var _can_jump
 var _can_hover
 var _can_climb
 
+var _playerInventory := []
 
+
+func addFuelToInventory(_item):
+	_playerInventory.append(_item)
+	for n in _playerInventory.size():
+		print(_playerInventory[n].shape, _playerInventory[n].color, _playerInventory[n].content)
+
+# -------------------Remove after testing
 func getSpeed():
 	return velocity
-
+# -------------------Remove after testing
 func getCurrentState():
 	return _current_state

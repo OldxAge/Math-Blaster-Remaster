@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/game/HazardSpawner.gd" type="Script" id=1]
+[ext_resource path="res://scenes/game/levels/alien/Alien.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/game/levels/meteor/Meteor.tscn" type="PackedScene" id=3]
+
+[node name="HazardSpawner" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="HoldingPoint" type="Position2D" parent="."]
+position = Vector2( 0, -200 )
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="SpawnPoint1" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -220, 0 )
+
+[node name="SpawnPoint2" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -110, 0 )
+
+[node name="SpawnPoint3" type="Position2D" parent="SpawnPoints"]
+
+[node name="SpawnPoint4" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 110, 0 )
+
+[node name="SpawnPoint5" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 220, 0 )
+
+[node name="SpawnInterval" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Hazards" type="Node" parent="."]
+
+[node name="Meteors" type="Node2D" parent="Hazards"]
+position = Vector2( 0, -200 )
+
+[node name="Meteor" parent="Hazards/Meteors" instance=ExtResource( 3 )]
+visible = false
+x_speed = 0
+
+[node name="Meteor2" parent="Hazards/Meteors" instance=ExtResource( 3 )]
+visible = false
+x_speed = 0
+
+[node name="Meteor3" parent="Hazards/Meteors" instance=ExtResource( 3 )]
+visible = false
+x_speed = 0
+
+[node name="Meteor4" parent="Hazards/Meteors" instance=ExtResource( 3 )]
+visible = false
+x_speed = 0
+
+[node name="Meteor5" parent="Hazards/Meteors" instance=ExtResource( 3 )]
+visible = false
+x_speed = 0
+
+[node name="Meteor6" parent="Hazards/Meteors" instance=ExtResource( 3 )]
+visible = false
+x_speed = 0
+
+[node name="Aliens" type="Node2D" parent="Hazards"]
+position = Vector2( 0, -200 )
+
+[node name="Alien" parent="Hazards/Aliens" instance=ExtResource( 2 )]
+
+[node name="Alien2" parent="Hazards/Aliens" instance=ExtResource( 2 )]
+
+[node name="Alien3" parent="Hazards/Aliens" instance=ExtResource( 2 )]
+
+[node name="Alien4" parent="Hazards/Aliens" instance=ExtResource( 2 )]
+
+[node name="Alien5" parent="Hazards/Aliens" instance=ExtResource( 2 )]
+
+[node name="Alien6" parent="Hazards/Aliens" instance=ExtResource( 2 )]
+
+[connection signal="timeout" from="SpawnInterval" to="." method="_on_SpawnInterval_timeout"]
