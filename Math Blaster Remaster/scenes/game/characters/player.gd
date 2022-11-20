@@ -37,7 +37,7 @@ var _can_hover
 var _can_climb
 
 var _playerInventory := []
-
+var hazardType = -1
 
 func addFuelToInventory(_item: Item):
 	_playerInventory.append(_item)

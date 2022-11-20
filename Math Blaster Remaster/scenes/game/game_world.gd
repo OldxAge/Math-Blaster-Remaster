@@ -11,3 +11,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	info.setVelocity($Player.getSpeed())
 	info.setState($Player.getCurrentState())
+
+
+func _on_PlayerShip_ready(extra_arg_0: Vector2) -> void:
+	$HazardSpawner.playerShip = $PlayerShip.position

@@ -1,32 +1,30 @@
 extends Area2D
 
-export var x_speed: int = 0
-export var y_speed: int = 0
-var _originalSpeed: int = 40
-
-func _ready() -> void:
-	_originalSpeed = y_speed
+var x_speed: int = 0
+var y_speed: int = 0
+var bulletOwner
 
 func _physics_process(delta: float) -> void:
 	position.y += y_speed * delta
 
 
 func _on_Bullet_body_entered(body: Node) -> void:
-	print("blammo")
-	zeroOutBullet()
-	BulletSpawner.handleSpentBullet(self)
+	print("blammo" + str(body.name))
+	if body.hazardType != null:
+		if body.hazardType != bulletOwner:
+			queue_free()
 
 
-func _on_Bullet_area_entered(area: Area2D) -> void:
-	print("Wowweeee")
-	zeroOutBullet()
-	BulletSpawner.handleSpentBullet(self)
+func _on_Bullet_area_entered(_hazard: Area2D) -> void:
+	print("Wowweeee + " + str(_hazard.name))
+	if _hazard.hazardType != bulletOwner:
+		queue_free()
+
+
 
 func zeroOutBullet():
 	y_speed = 0
+	
 
-func initiateBulletMovement(_bulletDirection):
-	if _bulletDirection < 0:
-		y_speed = _originalSpeed * _bulletDirection
-	else:
-		y_speed = _originalSpeed
+func initiateBulletMovement(_bulletSpeed: int):
+	y_speed = _bulletSpeed

@@ -1,46 +1,37 @@
 extends Node
 
+export var meteor_to_alien_ratio: int = 5
 
-onready var _meteors: Array = $Hazards/Meteors.get_children()
-onready var _aliens: Array = $Hazards/Aliens.get_children()
+onready var _meteor = preload("res://scenes/game/levels/meteor/Meteor.tscn")
+onready var _alien = preload("res://scenes/game/levels/alien/Alien.tscn")
+
 onready var _meteorSpawnPoints: Array = $SpawnPoints/Top.get_children()
 onready var _alienSpawnPoints: Array = $SpawnPoints/Sides.get_children()
-onready var _holdingPoint: Position2D = $HoldingPoint
-var _meteorIndex: int = 0
-var _alienIndex: int = 0
+onready var _hazardList = $Hazards
 
-func _ready() -> void:
-	pass
+onready var playerShip: Vector2
 
 func _on_SpawnInterval_timeout() -> void:
-	
-	spawnHazard()
-
-func spawnHazard():
-	var hazardType = randi()%5
-	
+	var hazardType = randi()%meteor_to_alien_ratio
 	if hazardType > 2:
-		var currentSpawn = randi()%_meteorSpawnPoints.size() - 1
-		_meteors[_meteorIndex].position = _meteorSpawnPoints[currentSpawn].position
-		_meteors[_meteorIndex].visible = true
-		if(_meteorIndex >= _meteors.size() - 1):
-			_meteorIndex = 0
-		else:
-			_meteorIndex += 1
+		spawnMeteor()
 	else:
-		var currentSpawn = randi()%_alienSpawnPoints.size() - 1
-		_aliens[_alienIndex].position = _alienSpawnPoints[currentSpawn].position
-		if _aliens[_alienIndex].position.x < 0:
-			_aliens[_alienIndex].moveRight()
-		else:
-			_aliens[_alienIndex].moveLeft()
-		_aliens[_alienIndex].visible = true
-		_aliens[_alienIndex].startTimer()
-		if(_alienIndex >= _aliens.size() - 1):
-			_alienIndex = 0
-		else:
-			_alienIndex += 1
+		spawnAlien()
 
-func resetHazard(_hazard: Area2D):
-	_hazard.position = _holdingPoint.position
-	_hazard.visible = false
+
+func spawnMeteor():
+	var index = randi()%_meteorSpawnPoints.size() - 1
+	var meteor = _meteor.instance()
+	meteor.playerShip = playerShip
+	_hazardList.add_child(meteor)
+	meteor.position = _meteorSpawnPoints[index].position
+
+func spawnAlien():
+	var index = randi()%_alienSpawnPoints.size() - 1
+	var alien = _alien.instance()
+	_hazardList.add_child(alien)
+	alien.position = _alienSpawnPoints[index].position
+	if alien.position.x < 0:
+		alien.moveRight()
+	else:
+		alien.moveLeft()

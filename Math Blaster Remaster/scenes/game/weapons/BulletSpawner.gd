@@ -1,18 +1,13 @@
 extends Node2D
 
-onready var _bulletArray: Array = $Bullets.get_children()
-onready var _holdingPoint: Position2D = $HoldingPosition
-var _bulletIndex: int = 0
 
-func releaseNewBullet(_firePoint: Vector2, _bulletDirection: int):
-	var _newBullet = _bulletArray.pop_front()
-	_newBullet.initiateBulletMovement(_bulletDirection)
+onready var bullet_scene = preload("res://scenes/game/weapons/Bullet.tscn")
+export var _bullet_speed: int = 40
+
+
+func spawnBullet(_firePoint: Vector2, _bulletDirection: int):
+	var _newBullet = bullet_scene.instance()
+	add_child(_newBullet)
+	_newBullet.bulletOwner = _bulletDirection
 	_newBullet.position = _firePoint
-	_newBullet.visible = true
-
-
-func handleSpentBullet(_spentBullet : Area2D):
-	_spentBullet.visible = false
-	_spentBullet.zeroOutBullet()
-	_spentBullet.position = _holdingPoint.position
-	_bulletArray.append(_spentBullet)
+	_newBullet.initiateBulletMovement(_bullet_speed * _bulletDirection)
