@@ -35,6 +35,7 @@ func spawnHazard():
 		else:
 			_aliens[_alienIndex].moveLeft()
 		_aliens[_alienIndex].visible = true
+		_aliens[_alienIndex].startTimer()
 		if(_alienIndex >= _aliens.size() - 1):
 			_alienIndex = 0
 		else:

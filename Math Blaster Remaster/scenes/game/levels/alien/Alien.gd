@@ -22,7 +22,14 @@ func moveRight():
 		x_speed *= -1
 
 
-#func _on_ShootTimer_timeout() -> void:
+
+func startTimer():
+	$ShootTimer.start(1)
+	$ShootTimer.one_shot = false
+
+func _on_ShootTimer_timeout() -> void:
+	BulletSpawner.releaseNewBullet($FirePoint.get_global_position(), 1)
+	print("Alien Shooting")
 	#shootLaser Shoot solid line all the way to the ground
 	
 

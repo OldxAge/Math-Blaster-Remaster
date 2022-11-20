@@ -45,3 +45,6 @@ script = ExtResource( 10 )
 
 [node name="Ladder" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
+
+[node name="Firepoint" type="Position2D" parent="."]
+position = Vector2( 0, -27 )

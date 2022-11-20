@@ -21,5 +21,7 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Ground")
 	elif Input.is_action_just_pressed("jump") and player._can_jump:
 		state_machine.transition_to("Air")
-	elif (Input.is_action_just_pressed("move_up") or Input.is_action_just_pressed("move_down")) and player._can_climb:
-		state_machine.transition_to("Climb")
+	elif (Input.is_action_just_pressed("move_up")):
+		BulletSpawner.releaseNewBullet(player._fire_point.get_global_position(), -1)
+#	elif (Input.is_action_just_pressed("move_up") or Input.is_action_just_pressed("move_down")) and player._can_climb:
+#		state_machine.transition_to("Climb")

@@ -48,6 +48,10 @@ config/name="Math Blaster Remaster"
 run/main_scene="res://scenes/game/game_world.tscn"
 config/icon="res://assets/sprites/icon.png"
 
+[autoload]
+
+BulletSpawner="*res://scenes/game/weapons/BulletSpawner.tscn"
+
 [display]
 
 window/size/width=480
@@ -103,6 +107,7 @@ crawl={
 2d_physics/layer_2="player"
 2d_physics/layer_3="items"
 2d_physics/layer_4="bullets"
+2d_physics/layer_5="enemies"
 
 [physics]
 

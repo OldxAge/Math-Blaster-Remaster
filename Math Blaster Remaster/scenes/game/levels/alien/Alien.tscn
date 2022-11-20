@@ -35,6 +35,8 @@ animations = [ {
 
 [node name="Alien" type="Area2D"]
 z_index = -1
+collision_layer = 16
+collision_mask = 10
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -42,9 +44,13 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="ShootTimer" type="Timer" parent="."]
+
+[node name="FirePoint" type="Position2D" parent="."]
+position = Vector2( 0, 25 )
 
 [connection signal="body_entered" from="." to="." method="_on_Alien_body_entered"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

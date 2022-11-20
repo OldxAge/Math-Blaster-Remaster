@@ -28,6 +28,7 @@ var velocity = Vector2.ZERO
 var speed
 
 onready var _animation_player = $AnimatedSprite
+onready var _fire_point = $Firepoint
 
 var _current_state
 var _can_crawl

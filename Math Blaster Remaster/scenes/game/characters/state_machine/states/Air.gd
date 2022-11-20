@@ -45,5 +45,7 @@ func physics_update(delta: float) -> void:
 		pressed = false
 		player._animation_player.play("falling")
 		player._current_state = "FALLING"
-	elif (Input.is_action_just_pressed("move_up") or Input.is_action_just_pressed("move_down")) and player._can_climb:
-		state_machine.transition_to("Climb", {do_climb = true})
+	elif (Input.is_action_just_pressed("move_up")):
+		BulletSpawner.releaseNewBullet(player._fire_point.get_global_position(), -1)
+#	elif (Input.is_action_just_pressed("move_up") or Input.is_action_just_pressed("move_down")) and player._can_climb:
+#		state_machine.transition_to("Climb", {do_climb = true})
