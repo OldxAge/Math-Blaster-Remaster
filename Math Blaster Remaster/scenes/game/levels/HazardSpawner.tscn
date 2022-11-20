@@ -49,4 +49,7 @@ position = Vector2( 280, 120 )
 wait_time = 2.0
 autostart = true
 
+[node name="Ship" type="Position2D" parent="."]
+position = Vector2( 0, 160 )
+
 [connection signal="timeout" from="SpawnInterval" to="." method="_on_SpawnInterval_timeout"]

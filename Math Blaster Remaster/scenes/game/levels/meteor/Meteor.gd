@@ -1,13 +1,15 @@
 extends Area2D
 
 onready var hazardSpawner
-onready var playerShip
+onready var playerShip: Vector2
+var hazardType = 1
 
 export var speed: int = 25
 
 
 func _physics_process(delta: float) -> void:
-	position = position.move_toward(Vector2(0,0), speed * delta)
+	var motion = position.direction_to(playerShip) * speed * delta
+	translate(motion)
 	rotate(1 * delta)
 
 
@@ -16,4 +18,5 @@ func _on_Meteor_body_entered(_body: Player) -> void:
 
 
 func _on_Meteor_area_entered(area: Area2D) -> void:
-	queue_free()
+	if area.hazardType != hazardType:
+		queue_free()

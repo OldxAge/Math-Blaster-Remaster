@@ -67,7 +67,7 @@ shape = 1
 color = 5
 
 [node name="HazardSpawner" parent="." instance=ExtResource( 7 )]
-position = Vector2( 0, -145 )
+position = Vector2( 0, -141 )
 
 [node name="BulletSpawner" parent="." instance=ExtResource( 6 )]
 position = Vector2( 404, -297 )

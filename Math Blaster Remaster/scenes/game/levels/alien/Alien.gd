@@ -21,7 +21,8 @@ func _on_Alien_body_entered(_body: Player) -> void:
 	queue_free()
 
 func _on_Alien_area_entered(area: Area2D) -> void:
-	queue_free()
+	if area.hazardType != hazardType:
+		queue_free()
 
 func moveLeft():
 	if x_speed < 0:

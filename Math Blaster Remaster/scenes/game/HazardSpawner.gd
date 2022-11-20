@@ -22,7 +22,7 @@ func _on_SpawnInterval_timeout() -> void:
 func spawnMeteor():
 	var index = randi()%_meteorSpawnPoints.size() - 1
 	var meteor = _meteor.instance()
-	meteor.playerShip = playerShip
+	meteor.playerShip = $Ship.position
 	_hazardList.add_child(meteor)
 	meteor.position = _meteorSpawnPoints[index].position
 
