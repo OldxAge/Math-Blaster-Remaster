@@ -14,7 +14,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_Bullet_body_entered(body: Node) -> void:
-	print("blammo" + str(body.name))
 	if body.hazardType != hazardType:
 		queue_free()
 

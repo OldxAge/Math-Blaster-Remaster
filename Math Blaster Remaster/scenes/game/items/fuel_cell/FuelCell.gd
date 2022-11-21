@@ -20,7 +20,4 @@ func _on_FuelCell_body_entered(body: Player) -> void:
 	var _item = Item.new()
 	_item.addContent(shape, color, content)
 	body.addFuelToInventory(_item)
-
-func removeFuelCell(_position: Vector2):
-	visible = false
-	position = _position
+	queue_free()

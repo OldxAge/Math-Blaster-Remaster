@@ -39,5 +39,4 @@ func moveRight():
 
 func _on_ShootTimer_timeout() -> void:
 	BulletSpawner.spawnBullet($FirePoint.get_global_position(), hazardType)
-	print("Alien Shooting")
 	#shootLaser Shoot solid line all the way to the ground

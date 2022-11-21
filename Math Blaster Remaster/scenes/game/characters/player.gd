@@ -35,6 +35,7 @@ var _can_crawl
 var _can_jump
 var _can_hover
 var _can_climb
+var ship_clickable = false
 
 var _playerInventory := []
 var hazardType = -1

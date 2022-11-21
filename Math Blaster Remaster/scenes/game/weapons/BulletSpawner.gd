@@ -2,7 +2,7 @@ extends Node2D
 
 
 onready var bullet_scene = preload("res://scenes/game/weapons/Bullet.tscn")
-export var _bullet_speed: int = 40
+export var _bullet_speed: int = 80
 
 
 func spawnBullet(_firePoint: Vector2, _bulletOwner: int):
