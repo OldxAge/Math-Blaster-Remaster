@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/game/items/fuel_cell/FuelCell.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/potions.png" type="Texture2D" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+size = Vector2( 7, 8 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 48, 160, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="FuelCell" type="Area2D"]
+z_index = -1
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 1 )
+shape = 5
+color = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+frames = SubResource( 3 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true
+target_position = Vector2( 0, 25 )
+
+[connection signal="body_entered" from="." to="." method="_on_FuelCell_body_entered"]
