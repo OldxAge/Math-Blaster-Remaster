@@ -1,0 +1,33 @@
+name: Test Math Blaster
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  pre-merge-checks:
+    name: Review Pull Request for any Errors
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      packages: read
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Godot
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y godot3
+
+      - name: Run GDScript Linter
+        run: |
+          godot --script tools/gdscript_linter.gd
+
+      - name: Merge Failed
+        if: ${{ failure() }}
+        run: |
+          echo "Awken ur Silence"
+          exit 1
