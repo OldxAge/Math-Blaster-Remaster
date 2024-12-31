@@ -1,0 +1,12 @@
+res://scenes/game/game_world.tscn
+res://scenes/game/characters/player_animation_states.tres
+res://scenes/game/characters/player.gd
+res://scenes/game/levels/platform.tscn
+res://scenes/game/characters/player.tscn
+res://scenes/game/characters/state_machine/states/Air.gd
+res://scenes/game/game_world.gd
+res://scenes/game/characters/state_machine/states/Ground.gd
+res://scenes/game/characters/state_machine/state_machine.gd
+res://scenes/game/characters/state_machine/states/Idle.gd
+res://scenes/game/characters/state_machine/states/Ladder.gd
+res://scenes/game/characters/state_machine/states/Water.gd

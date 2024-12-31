@@ -21,11 +21,14 @@ func physics_update(delta: float) -> void:
 	if(x_input != 0):
 		player._animation_player.flip_h = x_input < 0
 	
-	if(hovering):
+	if(hovering and player._can_hover):
 		player.velocity.x = lerp(player.velocity.x, x_input * player.WALK_SPEED, player.MVMT_ACCELERATION * delta)
 		player.velocity.y = lerp(player.velocity.y, player.HOVER_SPEED, player.HOVER_ACCELERATION * player.AIR_RESISTANCE * delta)
+		player.useHoverFuel()
 	else:
 		player.velocity.y = lerp(player.velocity.y, player.GRAVITY, player.AIR_RESISTANCE * delta)
+		if(player._hover_fuel < player.MAX_FUEL_LEVEL):
+			player.rechargeHoverFuel(player.FUEL_RECHARGE_RATE_AIR)
 	player.set_velocity(player.velocity)
 	player.set_up_direction(Vector2.UP)
 	player.move_and_slide()
@@ -39,7 +42,7 @@ func physics_update(delta: float) -> void:
 		else:
 			state_machine.transition_to("Ground")
 	
-	if Input.is_action_just_pressed("jump") and !pressed:
+	if Input.is_action_just_pressed("jump") and !pressed and player._can_hover:
 		hovering = true
 		player._animation_player.play("hovering")
 		player._current_state = "HOVERING"

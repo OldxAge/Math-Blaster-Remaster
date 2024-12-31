@@ -1,53 +1,61 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://bcebri26y8jww"]
 
-[ext_resource path="res://scenes/game/characters/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/game/game_world.gd" type="Script" id=2]
-[ext_resource path="res://scenes/_debug/debug_info.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/game/levels/platform.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/game/levels/HazardSpawner.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/game/levels/Ship.tscn" type="PackedScene" id=8]
+[ext_resource type="PackedScene" uid="uid://bd12romaql28f" path="res://scenes/game/characters/player.tscn" id="1"]
+[ext_resource type="Script" path="res://scenes/game/game_world.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/_debug/debug_info.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://xdfkrygdd5al" path="res://scenes/game/levels/platform.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/game/levels/HazardSpawner.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/game/levels/Ship.tscn" id="8"]
 
 [node name="Game" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="Levels" type="Node2D" parent="."]
 
 [node name="WorldCamera" type="Camera2D" parent="."]
-current = true
 
-[node name="InfoLayer" parent="." instance=ExtResource( 3 )]
+[node name="InfoLayer" parent="." instance=ExtResource("3")]
 
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 
 [node name="Platforms" type="Node2D" parent="."]
 z_index = -2
 
-[node name="platform" parent="Platforms" instance=ExtResource( 4 )]
-position = Vector2( 147, 1 )
+[node name="platform" parent="Platforms" instance=ExtResource("4")]
+position = Vector2(147, 1)
 collision_mask = 6
 
-[node name="platform2" parent="Platforms" instance=ExtResource( 4 )]
-position = Vector2( 69, 49 )
+[node name="platform2" parent="Platforms" instance=ExtResource("4")]
+position = Vector2(69, 49)
 rotation = -3.14159
-scale = Vector2( 4.69287, 0.418613 )
+scale = Vector2(4.69287, 0.418613)
 collision_mask = 6
 
-[node name="platform3" parent="Platforms" instance=ExtResource( 4 )]
-position = Vector2( -122, 88 )
+[node name="platform3" parent="Platforms" instance=ExtResource("4")]
+position = Vector2(-122, 88)
 collision_mask = 6
 
-[node name="platform4" parent="Platforms" instance=ExtResource( 4 )]
-position = Vector2( -162, -32 )
+[node name="platform4" parent="Platforms" instance=ExtResource("4")]
+position = Vector2(-162, -32)
 collision_mask = 6
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -62, 27 )
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(-62, 27)
 
-[node name="HazardSpawner" parent="." instance=ExtResource( 7 )]
-position = Vector2( 0, -141 )
+[node name="HazardSpawner" parent="." instance=ExtResource("7")]
+position = Vector2(0, -141)
 
-[node name="Ship" parent="." instance=ExtResource( 8 )]
-position = Vector2( 2, 14 )
+[node name="Ship" parent="." instance=ExtResource("8")]
 z_index = -3
+position = Vector2(2, 14)
 collision_layer = 32
 collision_mask = 26
+
+[node name="Fuel" type="ProgressBar" parent="."]
+offset_left = -238.0
+offset_top = 103.0
+offset_right = -40.0
+offset_bottom = 130.0
+show_percentage = false
+
+[connection signal="updateHoverFuelUI" from="Player" to="." method="_on_player_update_hover_fuel_ui"]

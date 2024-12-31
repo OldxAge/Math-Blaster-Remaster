@@ -14,6 +14,9 @@ func physics_update(delta: float) -> void:
 	var x_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var y_input = Input.get_action_strength("move_up") - Input.get_action_strength("move_down")
 	
+	if(player._hover_fuel < player.MAX_FUEL_LEVEL):
+		player.rechargeHoverFuel()
+	
 	player.velocity.x = lerp(player.velocity.x, x_input * player.CLIMB_SPEED, player.MVMT_ACCELERATION * delta)
 	player.velocity.y = lerp(player.velocity.y, y_input * player.CLIMB_SPEED, player.MVMT_ACCELERATION * delta)
 	player.set_velocity(player.velocity)

@@ -11,6 +11,9 @@ func enter() -> void:
 func physics_update(delta: float) -> void:
 	var x_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	
+	if(player._hover_fuel < player.MAX_FUEL_LEVEL):
+		player.rechargeHoverFuel()
+	
 	player.velocity.x = lerp(player.velocity.x, x_input * player.SWIM_SPEED, player.SWIM_ACCELERATION * delta)
 	if swimming:
 		player.velocity.y = lerp(player.velocity.y, -player.SWIM_SPEED, player.SWIM_ACCELERATION * delta)

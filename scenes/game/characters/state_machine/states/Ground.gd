@@ -13,7 +13,8 @@ func physics_update(delta: float) -> void:
 		player._can_jump = false
 		state_machine.transition_to("Air")
 		return
-
+	if(player._hover_fuel < player.MAX_FUEL_LEVEL):
+		player.rechargeHoverFuel()
 	var x_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	if(x_input != 0):
 		player._animation_player.flip_h = x_input < 0

@@ -16,6 +16,9 @@ func update(_delta: float) -> void:
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")
 		return
+	
+	if(player._hover_fuel < player.MAX_FUEL_LEVEL):
+		player.rechargeHoverFuel()
 
 	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 		state_machine.transition_to("Ground")

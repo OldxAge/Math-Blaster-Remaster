@@ -1,50 +1,50 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://bd12romaql28f"]
 
-[ext_resource path="res://scenes/game/characters/player_animation_states.tres" type="SpriteFrames" id=1]
-[ext_resource path="res://scenes/game/characters/player.gd" type="Script" id=2]
-[ext_resource path="res://scenes/game/characters/state_machine/states/Idle.gd" type="Script" id=4]
-[ext_resource path="res://scenes/game/characters/state_machine/states/Ladder.gd" type="Script" id=7]
-[ext_resource path="res://scenes/game/characters/state_machine/states/Air.gd" type="Script" id=9]
-[ext_resource path="res://scenes/game/characters/state_machine/states/Water.gd" type="Script" id=10]
-[ext_resource path="res://scenes/game/characters/state_machine/states/Ground.gd" type="Script" id=12]
-[ext_resource path="res://scenes/game/characters/state_machine/state_machine.gd" type="Script" id=13]
+[ext_resource type="SpriteFrames" uid="uid://iovmnieknali" path="res://scenes/game/characters/player_animation_states.tres" id="1"]
+[ext_resource type="Script" path="res://scenes/game/characters/player.gd" id="2"]
+[ext_resource type="Script" path="res://scenes/game/characters/state_machine/states/Idle.gd" id="4"]
+[ext_resource type="Script" path="res://scenes/game/characters/state_machine/states/Ladder.gd" id="7"]
+[ext_resource type="Script" path="res://scenes/game/characters/state_machine/states/Air.gd" id="9"]
+[ext_resource type="Script" path="res://scenes/game/characters/state_machine/states/Water.gd" id="10"]
+[ext_resource type="Script" path="res://scenes/game/characters/state_machine/states/Ground.gd" id="12"]
+[ext_resource type="Script" path="res://scenes/game/characters/state_machine/state_machine.gd" id="13"]
 
-[sub_resource type="RectangleShape2D" id=1]
-size = Vector2( 6, 8 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(6, 8)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 2
 collision_mask = 5
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-frames = ExtResource( 1 )
-animation = "swimming"
+sprite_frames = ExtResource("1")
+animation = &"swimming"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 2 )
-scale = Vector2( 1, 0.985075 )
-shape = SubResource( 1 )
+position = Vector2(0, 2)
+scale = Vector2(1, 0.985075)
+shape = SubResource("1")
 
 [node name="StateMachine" type="Node" parent="."]
-script = ExtResource( 13 )
+script = ExtResource("13")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource( 4 )
+script = ExtResource("4")
 
 [node name="Ground" type="Node" parent="StateMachine"]
-script = ExtResource( 12 )
+script = ExtResource("12")
 
 [node name="Air" type="Node" parent="StateMachine"]
-script = ExtResource( 9 )
+script = ExtResource("9")
 
 [node name="Water" type="Node" parent="StateMachine"]
-script = ExtResource( 10 )
+script = ExtResource("10")
 
 [node name="Ladder" type="Node" parent="StateMachine"]
-script = ExtResource( 7 )
+script = ExtResource("7")
 
 [node name="Firepoint" type="Marker2D" parent="."]
-position = Vector2( 0, -27 )
+position = Vector2(0, -27)
